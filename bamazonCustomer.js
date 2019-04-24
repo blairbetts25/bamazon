@@ -17,7 +17,6 @@ var connection = mysql.createConnection({
 // connects to the database to be able to pull in information
 connection.connect(function (err) {
     if (err) throw err;
-    // run the start function after the connection is made to prompt the user
     startBamazon();
 });
 // function that loops through the list on sql and pushes into an array to be able to display the rawlist in the funciton startBamazon()
