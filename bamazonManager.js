@@ -233,3 +233,39 @@ function addUnits(products, data, bamazonArrPrice) {
         }
     )
 }
+function addNewProduct() {
+    inquirer
+        .prompt([
+            {
+                name: "productName",
+                type: "input",
+                message: "What is the name of the product that you would like to add?"
+            },
+            {
+                name: "departmentName",
+                type: "input",
+                message: "What department is your product in?"
+
+            },
+            {
+                name: "price",
+                type: "input",
+                message: "How much does your product cost?"
+            },
+            {
+                name: "stock",
+                type: "input",
+                message: "How many units are there?"
+            },
+        ]).then(function (products) {
+            connection.query("INSERT INTO products SET ?",
+            {
+                product_name:products.productName,
+                department_name:products.departmentName,
+                price: products.price,
+                stock_quantity: products.stock
+            })
+            console.log("Your product was successful updated!")
+            menuOptions();
+        })
+}
